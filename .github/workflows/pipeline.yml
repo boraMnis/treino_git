@@ -1,25 +1,18 @@
-name: Primeiro CI/CD
+name: Lightsail Pipeline
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+
 jobs:
-  deploy:
+  run-commands:
     runs-on: ubuntu-latest
     steps:
-      - name: Conectar no Lightsail e rodar ls
-        uses: appleboy/ssh-action@v1.0.0
+      - name: Executar comandos na instância Lightsail
+        uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.LIGHTSAIL_HOST }}
-          username: ${{ secrets.LIGHTSAIL_USER }}
+          username: ubuntu
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
-            echo "=== Onde estou ==="
-            pwd
-
-            echo "=== Quem sou eu ==="
-            whoami
-
-            echo "=== Listando arquivos ==="
-            ls -lah
+            cd /var/www
+            ls

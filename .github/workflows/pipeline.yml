@@ -16,3 +16,4 @@ jobs:
           script: |
             cd /var/www
             ls
+            pwd

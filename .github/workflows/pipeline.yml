@@ -15,4 +15,11 @@ jobs:
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
-            ls
+            echo "=== Onde estou ==="
+            pwd
+
+            echo "=== Quem sou eu ==="
+            whoami
+
+            echo "=== Listando arquivos ==="
+            ls -lah

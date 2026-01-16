@@ -16,6 +16,6 @@ jobs:
           username: ubuntu
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
-            cd /var/www
+            grep $(whoami) /etc/passwd
             ls
             pwd
